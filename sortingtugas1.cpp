@@ -164,41 +164,34 @@ void quicksort(int low,int high){
     cout << "data telah diiurutkan bedasarkan tahun produksi";
 }
 
-void sequentialsearch(){
-    string cari;
-    bool found = false;
-    int i = 0;
-
-    if (jumlahkendaraan == 0){
-        cout << "data kosong " << endl;
+void sequentialsearch() {
+    if (jumlahkendaraan == 0) {
+        cout << "Data kosong" << endl;
         return;
     }
 
+    string cari;
     cin.ignore();
-    cout << "masukkan nama pemilik yang ingin dicari: "; 
+    cout << "Masukkan nama pemilik yang ingin dicari: ";
     getline(cin, cari);
 
-    while ((i < jumlahkendaraan) && !found){
-        if (datakendaraan[i].nama_pemilik == cari){
+    bool found = false;
+    
+    for (int i = 0; i < jumlahkendaraan; i++) {
+        if (datakendaraan[i].nama_pemilik == cari) {
             found = true;
-        } else {
-            i++;
+            cout << "\nKendaraan ditemukan:" << endl;
+            cout << "Plat Kendaraan    : " << datakendaraan[i].plat << endl;
+            cout << "Jenis Kendaraan   : " << datakendaraan[i].jenis << endl;
+            cout << "Merk Kendaraan    : " << datakendaraan[i].merk << endl;
+            cout << "Model Kendaraan   : " << datakendaraan[i].model << endl;
+            cout << "Nama Pemilik      : " << datakendaraan[i].nama_pemilik << endl;
+            cout << "Tahun Produksi    : " << datakendaraan[i].tahun_produksi << endl;
+            cout << "------------------------------------" << endl;
         }
     }
-    for (int i = 0; i < jumlahkendaraan; i++) {
-        if (found){
-        cout << "nama pemilik ditemukan:\n";
-        cout << "\nkendaraan ke-" << (i + 1) << ":" << endl;
-        cout << "Plat Kendaraan    : " << datakendaraan[i].plat << endl;
-        cout << "Jenis Kendaraan   : " << datakendaraan[i].jenis << endl;
-        cout << "Merk Kendaraan    : " << datakendaraan[i].merk << endl;
-        cout << "Model Kendaraan   : " << datakendaraan[i].model << endl;
-        cout << "Nama Pemilik      : " << datakendaraan[i].nama_pemilik << endl;
-        cout << "Tahun Produksi    : " << datakendaraan[i].tahun_produksi << endl;
-        cout << "------------------------------------" << endl;
-    }
-    }   
-    if (found == false){
-        cout << "nama pemilik dengan nama " << cari << " tidak ditemukan" ;
+
+    if (!found) {
+        cout << "Nama pemilik dengan nama \"" << cari << "\" tidak ditemukan." << endl;
     }
 }
